@@ -1,7 +1,9 @@
 package com.epam.mjc;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class StringSplitter {
 
@@ -13,6 +15,15 @@ public class StringSplitter {
      * @return List of substrings
      */
     public List<String> splitByDelimiters(String source, Collection<String> delimiters) {
-        throw new UnsupportedOperationException("You should implement this method.");
+        StringBuilder sb = new StringBuilder();
+        for (String ch: delimiters){
+            sb.append(ch);
+        }
+        StringTokenizer tokenizer = new StringTokenizer(source, sb.toString());
+        List<String> result = new ArrayList<>();
+        while (tokenizer.hasMoreTokens()){
+            result.add(tokenizer.nextToken());
+        }
+        return result;
     }
 }
